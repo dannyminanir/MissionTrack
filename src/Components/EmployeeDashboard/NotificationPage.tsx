@@ -11,7 +11,7 @@ const NotificationPage: React.FC = () => {
       <Header />
       <div className="flex flex-col md:flex-row mt-20 min-h-screen bg-blue-100 gap-6">
         <Sidebar />
-        <div className="flex flex-col flex-1 px-4 md:px-8">
+        <div className="flex flex-col ml-50 flex-1 px-4 md:px-8">
           {/* Title */}
           <div className="w-full max-w-4xl py-2 mt-5 bg-gradient-to-l from-green-300 to-blue-400 rounded-md mx-auto">
             <h1 className="font-bold text-2xl text-center">Notifications</h1>
