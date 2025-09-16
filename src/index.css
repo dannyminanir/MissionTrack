@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --breakpoint-sm: 600px;
+  --breakpoint-md: 800px;
+  --breakpoint-large: 1000px;
+  --breakpoint-desktop: 1200px;
+
+  /* Primary colors */
+  --color-primaryColor-10: oklch(0.8997 0.0486 260.89);
+  --color-primaryColor-50: oklch(0.8403 0.0793 260.27);
+  --color-primaryColor-100: oklch(0.7938 0.1044 259.71);
+  --color-primaryColor-200: oklch(0.7458 0.1311 259.56);
+  --color-primaryColor-300: oklch(0.7 0.1575 259.74);
+  --color-primaryColor-400: oklch(0.6592 0.1732 259.62);
+  --color-primaryColor-500: oklch(0.6231 0.188 259.81);
+  --color-primaryColor-600: oklch(0.5734 0.1884 260.01);
+  --color-primaryColor-700: oklch(0.5367 0.1894 260.33);
+  --color-primaryColor-800: oklch(0.5013 0.1878 260.38);
+  --color-primaryColor-900: oklch(0.4661 0.1858 260.59);
+
+  /* Secondary Accent Colors */
+  --color-accent-10: oklch(0.8559 0.1405 169.12);
+  --color-accent-50: oklch(0.8559 0.1405 169.12);
+  --color-accent-100: oklch(0.7959 0.1411 168.03);
+  --color-accent-200: oklch(0.7333 0.139 166.92);
+  --color-accent-300: oklch(0.6882 0.1375 165.43);
+  --color-accent-400: oklch(0.6434 0.1339 164.07);
+  --color-accent-500: oklch(0.596 0.1274 163.23);
+  --color-accent-600: oklch(0.5518 0.1183 163.2);
+  --color-accent-700: oklch(0.5068 0.109 163.18);
+  --color-accent-800: oklch(0.4607 0.099389 163.1318);
+  --color-accent-900: oklch(0.4109 0.087083 164.4039);
+ 
+}
