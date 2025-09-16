@@ -1,12 +1,33 @@
-# React + Vite
+Mission Track System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern web app that streamlines employee business trip ("mission") requests by replacing paper/email processes with a transparent, efficient workflow.
 
-Currently, two official plugins are available:
+🚀 Overview
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Digitize Requests: Employees submit missions via a simple form (destination, purpose, dates, budget, attachments).
+Real-Time Tracking: Live status updates (Pending → Approved/Rejected requests).
+Manager Dashboard: Review, approve/reject, and allocate budgets quickly.
+Finance Visibility: Track departmental spending, validate expenses, and export reports.
+Centralized Records: All requests, approvals, and expenses stored in one searchable database.
+Analytics & Reporting: Automated insights (frequent destinations, top costs, approval timelines).
 
-## Expanding the ESLint configuration
+👤 User Roles
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Employee: Submit requests, track status, upload expenses.
+Manager: Approve/reject with notes, set budgets.
+Finance: Monitor spending, validate expenses, export reports.
+Admin: Configure workflows, roles, and policies.
+
+🛠️ Tech Stack (Suggested)
+
+Frontend: React, TypeScript, Redux Toolkit, Tailwind CSS
+Backend: Node.js (Express) with REST APIs
+Database: PostgreSQL
+Auth: JWT, role-based access control
+
+📱 Key Screens
+
+Employee: New Request, My Requests, Expenses
+Manager: Approvals Dashboard
+Finance: Spend Overview, Validation, Reports
+Admin: Workflow & Policy Setup
