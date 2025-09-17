@@ -1,6 +1,7 @@
 // components/TotalSpend.tsx
 import React from "react";
 import { CiDollar } from "react-icons/ci";
+import { FiDollarSign } from "react-icons/fi";
 
 type TotalSpendProps = {
   amount?: string;

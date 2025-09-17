@@ -10,15 +10,14 @@ const RecoverPassword: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   // Mock API: returns a fake reset token
-const send = async (email: string) => {
-  return new Promise<{ token: string }>((resolve) => {
-    setTimeout(() => {
-      console.log("Sending reset link to:", email); // ✅ Now email is used
-      resolve({ token: "mock-reset-token-123" });
-    }, 1000);
-  });
-};
-
+  const send = async (email: string) => {
+    return new Promise<{ token: string }>((resolve) => {
+      setTimeout(() => {
+        console.log("Sending reset link to:", email); 
+        resolve({ token: "mock-reset-token-123" });
+      }, 1000);
+    });
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();

@@ -2,11 +2,11 @@ import React from "react";
 import { CiBellOn } from "react-icons/ci";
 import { FiUser, FiFileText, FiList, FiPlusCircle } from "react-icons/fi";
 import { VscHome } from "react-icons/vsc";
+import { BiWallet } from "react-icons/bi";
 import { Link, useLocation } from "react-router-dom";
-import { useTheme } from "../hook/useTheme";
-import { RiTeamLine } from "react-icons/ri";
+import { useTheme } from "../../hook/useTheme";
 
-const ManagerSideBar: React.FC = () => {
+const Sidebar: React.FC = () => {
   const { theme } = useTheme();
   const location = useLocation();
 
@@ -15,22 +15,23 @@ const ManagerSideBar: React.FC = () => {
 
   // Sidebar navigation
   const navItems = [
-    { icon: VscHome, label: "Dashboard", path: "/manager" },
-    { icon: CiBellOn, label: "Notifications", path: "/notificationsM" },
-    { icon: FiUser, label: "Profile", path: "/profileM" },
+    { icon: VscHome, label: "Dashboard", path: "/dashboard" },
+    { icon: CiBellOn, label: "Notifications", path: "/notifications" },
+    { icon: FiUser, label: "Profile", path: "/profile" },
   ];
 
   // Quick actions (fixed icons)
   const quickActions = [
-    { icon: RiTeamLine, label: "Team Management", path: "/team" },
-    { icon: FiList, label: "Requests", path: "/requested" },
-    { icon: FiFileText, label: "Reports", path: "/reported" },
+    { icon: FiPlusCircle, label: "New Mission Request", path: "/request" },
+    { icon: FiList, label: "Request List/Tracking", path: "/requestList" },
+    { icon: BiWallet, label: "Expense Logging", path: "/missions/history" },
+    { icon: FiFileText, label: "Mission Reporting", path: "/report" },
   ];
 
   return (
     <div className="">
       <aside
-      className={`fixed top-20 h-full left-0 w-75 flex flex-col justify-between shadow-md z-40 overflow-y-auto ${twTheme(
+      className={`fixed top-20 h-full left-0 w-64 flex flex-col justify-between shadow-md z-40 overflow-y-auto ${twTheme(
         "bg-blue-50",
         "bg-gray-900 text-white"
       )}`}
@@ -88,4 +89,4 @@ const ManagerSideBar: React.FC = () => {
   );
 };
 
-export default ManagerSideBar;
+export default Sidebar;

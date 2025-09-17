@@ -35,7 +35,7 @@ const MissionPurpose: React.FC = () => {
               paddingAngle={2}
               label={({ value }) => `${value}%`}
             >
-              {data.map((_, index) => (
+              {data.map((entry, index) => (
                 <Cell key={`cell-${index}`} fill={COLORS[index]} />
               ))}
             </Pie>

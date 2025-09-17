@@ -1,12 +1,14 @@
 // src/components/ApplicationForm.tsx
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 import Input from "./Input";
 import Select from "./Select";
 import Checkbox from "./Checkbox";
 
 const ApplicationForm: React.FC = () => {
   const navigate = useNavigate();
+  const { login } = useAuth(); // Example login, replace with your logic
 
   // One state object for all form values
   const [formData, setFormData] = useState({
@@ -26,24 +28,22 @@ const ApplicationForm: React.FC = () => {
   const [loading, setLoading] = useState(false);
 
   // Rwandan administrative divisions
-// Rwandan administrative divisions
-const provinces = ["Kigali", "Northern", "Southern", "Eastern", "Western"];
-
-const districts: Record<string, string[]> = {
-  Kigali: ["Gasabo", "Kicukiro", "Nyarugenge"],
-  Northern: ["Musanze", "Gicumbi", "Burera"],
-  Southern: ["Huye", "Nyanza", "Muhanga"],
-  Eastern: ["Rwamagana", "Nyagatare", "Kayonza"],
-  Western: ["Rusizi", "Rubavu", "Nyamasheke"],
-};
-
-const sectors: Record<string, string[]> = {
-  Gasabo: ["Gikomero", "Kacyiru", "Kimironko"],
-  Kicukiro: ["Nyarutarama", "Kanombe", "Gahanga"],
-  Nyarugenge: ["Nyamirambo", "Kimisagara", "Muhima"],
-  Musanze: ["Musanze", "Muhoza", "Kinigi"],
-  // Add more as needed
-};
+  const provinces = ["Kigali", "Northern", "Southern", "Eastern", "Western"];
+  const districts = {
+    Kigali: ["Gasabo", "Kicukiro", "Nyarugenge"],
+    Northern: ["Musanze", "Gicumbi", "Burera"],
+    Southern: ["Huye", "Nyanza", "Muhanga"],
+    Eastern: ["Rwamagana", "Nyagatare", "Kayonza"],
+    Western: ["Rusizi", "Rubavu", "Nyamasheke"],
+  };
+  const sectors = {
+    Gasabo: ["Gikomero", "Kacyiru", "Kimironko"],
+    Kicukiro: ["Nyarutarama", "Kanombe", "Gahanga"],
+    Nyarugenge: ["Nyamirambo", "Kimisagara", "Muhima"],
+    Musanze: ["Musanze", "Muhoza", "Kinigi"],
+    // Add more as needed
+  };
+  const orgTypes = ["Non-profit", "Startup", "Corporate", "Governmental"];
 
   // Handle form submission
   const handleSubmit = async (e: React.FormEvent) => {

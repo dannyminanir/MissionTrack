@@ -19,6 +19,7 @@ const send = async (newPassword: string) => {
     }, 1000);
   });
 };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setSuccess(null);
