@@ -13,16 +13,16 @@ import TeamMembers from "../manager/TeamMembers";
 
 const ManagerDashboard: React.FC = () => {
   return (
-    <div className=" mt-20 flex bg-[#E6EAF5] min-h-screen ">
+    <div className=" mt-20 flex bg-[#E6EAF5] w-full min-h-screen ">
       {/* Sidebar */}
       <ManagerSideBar />
 
       {/* Main Content */}
-      <div className="flex ml-80 ">
+      <div className="flex ml-15 ">
         <Header />
         
         <main className="p-6 ">
-          <div className="bg-[#E6EAF5] text-black p-2 rounded-xl mb-3">
+          <div className="bg-gradient-to-r  from-primaryColor-100 to-accent-10 text-black p-2 rounded-xl mb-3">
             <h1 className="font-bold text-xl ml-2">Hello Manager, Here's Mission Requests Overview </h1>
           </div>
           <div className="grid grid-cols-1    md:grid-cols-4 gap-6">
