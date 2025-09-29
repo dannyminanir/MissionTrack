@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch,useSelector } from "react-redux";
-import Header from "../Components/HeaderDash";
-import AdminSidebar from "../Components/Admin/AdminSidebar";
 import AdminStats from "../Components/Admin/AdminStats";
 import CompaniesTable from "../Components/Admin/CompaniesTable";
 import { FiSearch } from "react-icons/fi";
 import { getAllCompanies } from "../redux/companySlice";
 import type{ RootState,AppDispatch } from "../redux/store";
 import { Spin } from "antd";
-import AdminActions from "./AdminActions";
+
 import ApplicationFormRight from "../Components/ApplicationFormRight";
 
 const twTheme = (light: string, dark: string) => `${light} dark:${dark}`;
