@@ -41,14 +41,45 @@ const LoginForm: React.FC = () => {
   if (Object.keys(newErrors).length > 0) return;
 
   setLoading(true);
+
   try {
-    // 🔹 login should return response with user + token
     const res = await login(email, password);
 
+    // ✅ Save token + userId to localStorage for later requests
+    if (res?.token) {
+      localStorage.setItem("token", res.token);
+    }
+    if (res?.user?.id) {
+      localStorage.setItem("userId", res.user.id);
+    }
+
     if (res?.user?.role === "manager") {
-      navigate("/manager");
+      try {
+        // ✅ token comes from res.token (not res.user.token)
+        const base64Url = res.token.split(".")[1];
+        const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+        const payload = JSON.parse(atob(base64));
+
+        const companyStatus = payload.companyStatus; // 👈 comes from token
+
+        if (companyStatus === "pending") {
+          navigate("/pending");
+        } else if (companyStatus === "rejected") {
+          navigate("/rejected", { state: { formData: res.user } });
+          // 👆 pass old company data for resubmission
+        } else if (companyStatus === "approved") {
+          navigate("/manager");
+        } else {
+          navigate("/manager"); // fallback
+        }
+      } catch (err) {
+        console.error("Failed to decode token", err);
+        navigate("/manager"); // fallback
+      }
     } else if (res?.user?.role === "employee") {
-      navigate("/dashboard");
+      navigate("/employee");
+    } else if (res?.user?.role === "admin") {
+      navigate("/admin");
     } else {
       navigate("/login"); // fallback
     }
@@ -58,6 +89,7 @@ const LoginForm: React.FC = () => {
     setLoading(false);
   }
 };
+
 
 
   return (
@@ -149,7 +181,7 @@ const LoginForm: React.FC = () => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full mt-15 py-3 rounded-2xl font-semibold text-white shadow-md transition ${
+              className={`w-full mt-15 py-3 rounded-2xl cursor-pointer font-semibold text-white shadow-md transition ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed"
                   : "bg-blue-600 hover:bg-blue-700"

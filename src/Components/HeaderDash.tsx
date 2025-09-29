@@ -1,12 +1,18 @@
 import React from "react";
-import { FiBell, FiUser } from "react-icons/fi";
+import { FiBell, FiUser, FiMenu } from "react-icons/fi"; 
 import { useTheme } from "../hook/useTheme";
 import { useAuth } from "../context/AuthContext";
 import { Link } from "react-router-dom";
 
-const Header: React.FC = () => {
-  const { theme, toggleTheme } = useTheme();
+interface HeaderProps {
+  onMenuClick?: () => void; // ✅ optional prop for sidebar toggle
+}
+
+const Header: React.FC<HeaderProps> = ({ onMenuClick }) => {
+  const { theme } = useTheme();
   const { user } = useAuth();
+
+  
 
   const twTheme = (light: string, dark: string) =>
     theme === "light" ? light : dark;
@@ -18,21 +24,23 @@ const Header: React.FC = () => {
         "bg-gray-800 border-gray-700"
       )}`}
     >
-
-      {/* Logo + Title */}
+      {/* Logo + Title + Mobile Menu Button */}
       <div className="flex items-center gap-2">
+        {/* Mobile Menu Button (hidden on md+) */}
+        {onMenuClick && (
+          <button
+            className="md:hidden p-2 text-gray-700 dark:text-gray-200"
+            onClick={onMenuClick}
+          >
+            <FiMenu size={24} />
+          </button>
+        )}
         <img src="/logo.svg" alt="logo" className="h-8" />
         <h1 className="font-bold text-xl text-primaryColor-700">
           Mission<span className="text-accent-700">Track</span>
         </h1>
       </div>
-      {/* Theme Toggle */}
- {/* <button
-          onClick={toggleTheme}
-          className="rounded-lg ml-315 text-sm font-medium hover:opacity-80 transition"
-        >
-          {theme === "light" ? "🌙" : "☀️"}
-        </button> */}
+
       {/* Right section */}
       <div className="flex items-center gap-6">
         {/* Notifications */}
@@ -41,7 +49,6 @@ const Header: React.FC = () => {
             size={22}
             className={twTheme("text-gray-700", "text-gray-200")}
           />
-          {/* Notification badge */}
           <span className="absolute -top-2 -right-2 bg-red-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full">
             4
           </span>
@@ -55,7 +62,7 @@ const Header: React.FC = () => {
               className={twTheme("text-white", "text-gray-200")}
             />
           </div>
-          <span className="text-sm font-medium">{user?.name || "Employee"}</span>
+          <span className="text-sm font-medium">{user?.fullName || "Employee"}</span>
         </div>
       </div>
     </header>

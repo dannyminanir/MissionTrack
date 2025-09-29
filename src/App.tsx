@@ -1,6 +1,16 @@
 
-// import RequestManager from "./manager/RequestManager";
+// import MissionReportDetails from "./manager/MissionReportDetails";
+
+// import AdminActions from "./pages/AdminActions";
+
+
 import AppRoute from "./Router/AppRoute";
+
+
+
+// Rejected
+
+
 
 
 function App() {
@@ -8,12 +18,12 @@ function App() {
   return (
 
     <>
-   {/* <ApplicationForm/> */}
-
-    {/* <MissionList/> */}
-       <AppRoute/>/
-       {/* <RequestManager/> */}
-    
+    {/* <FinanceDashboard/> */}
+  {/* <Subscriptions/> */}
+       <AppRoute/>
+        {/* <MissionReportDetails/> */}
+       {/* <AdminActions/> */}
+       {/* <AdminDashboard/> */}
     </>
       );
 }

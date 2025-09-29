@@ -1,54 +1,59 @@
-import React from "react";
-import Header from "../Components/HeaderDash";
+import React, { useState } from "react";
+import { Outlet } from "react-router-dom";
+import HeaderManager from "../manager/HeaderManager";
 import ManagerSideBar from "../manager/ManagerSideBar";
-import PendingRequests from "../manager/PendingRequests";
-import ApprovedMissions from "../manager/ApprovedMissions";
-import TotalSpend from "../manager/TotalSpend";
-import MissionsInProgress from "../manager/MissionsInProgress";
-import MissionPurpose from "../manager/chart/MissionPurpose";
-import MissionsPerEmployee from "../manager/chart/MissionsPerEmployee";
-import QuickLinks from "../manager/QuickLinks";
-import RecentActivities from "../manager/RecentActivities";
-import TeamMembers from "../manager/TeamMembers";
+
+const twTheme = (light: string, dark: string) => {
+  return `${light} dark:${dark}`;
+};
 
 const ManagerDashboard: React.FC = () => {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   return (
-    <div className=" mt-20 flex bg-[#E6EAF5] min-h-screen ">
-      {/* Sidebar */}
-      <ManagerSideBar />
+    <>
+      {/* Header with menu button */}
+      <HeaderManager onMenuClick={() => setMenuOpen(true)} />
 
-      {/* Main Content */}
-      <div className="flex  ml-30">
-        <Header />
-        
-        <main className="p-6 ml-25 w-[1250px]">
-          <div className="ml-20">
-            <div className="bg-gradient-to-r  from-primaryColor-100 to-accent-10 text-black p-2 rounded-xl mb-3">
-            <h1 className="font-bold text-xl ml-2">Hello Manager, Here's Mission Requests Overview </h1>
-          </div>
-          <div className="grid grid-cols-1  md:grid-cols-4 gap-6">
-            <PendingRequests />
-            <ApprovedMissions />
-            <MissionsInProgress/>
-            <TotalSpend />
-          </div>
-          <div className="flex  w-[1100px] gap-9">
+      <div
+        className={`flex gap-70 mt-20 ${twTheme(
+          "bg-[#E6EAF5]",
+          "bg-gray-900"
+        )}`}
+      >
+        {/* Sidebar for large screens */}
+        <div className="hidden sm:flex">
+          <ManagerSideBar />
+        </div>
 
-            <div className="grid  grid-cols-1 w-[1250px] md:grid-cols-2 gap-10 mt-6">
-            <MissionPurpose/>
-            <MissionsPerEmployee/>
-            <QuickLinks/>
-            <RecentActivities/>
-          </div>
-          <div className="mt-6">
-            <TeamMembers/>
-          </div>
-          </div>
-          
-          </div>
-        </main>
+        {/* Main content */}
+        <Outlet />
       </div>
-    </div>
+
+      {/* Sidebar Modal for small screens */}
+      {menuOpen && (
+        <div className="fixed inset-0 z-50 flex">
+          {/* Overlay */}
+          <div
+            className="fixed inset-0 bg-black/50"
+            onClick={() => setMenuOpen(false)}
+          ></div>
+
+          {/* Sidebar Modal */}
+          <div
+            className={`relative w-64  h-full shadow-xl transform transition-transform duration-300`}
+          >
+            <ManagerSideBar />
+            <button
+              className="absolute top-4 right-4 text-gray-600 dark:text-gray-300"
+              onClick={() => setMenuOpen(false)}
+            >
+              ✕
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
