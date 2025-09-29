@@ -14,6 +14,8 @@ import {
   FaEdit,
 } from "react-icons/fa";
 import { FaCalendar } from "react-icons/fa6";
+import Header from "../HeaderDash";
+import Sidebar from "./Sidebar";
 
 // 🔹 file type icon helper
 const getFileIcon = (fileName: string) => {
@@ -187,8 +189,11 @@ const Report: React.FC<ReportProps> = ({ missionId }) => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen">
-      <div className="w-[900px] py-2 mt-5 bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
+    <div className="min-h-screen bg-[#E6EAF5] flex">
+      <Header/>
+        <Sidebar/>
+    <div className="flex flex-col min-h-screen mt-20 ml-70 mr-8">
+      <div className="w-full py-2 mt-5 bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
         <h1 className="font-bold text-2xl text-center">Daily Mission Report</h1>
       </div>
 
@@ -357,6 +362,8 @@ const Report: React.FC<ReportProps> = ({ missionId }) => {
         </form>
       )}
     </div>
+        </div>
+
   );
 };
 

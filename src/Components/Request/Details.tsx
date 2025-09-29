@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Input from "../Input";
-import Header from "../HeaderDash";
-import Sidebar from "../Dashboard/Sidebar";
+
 import Stepper from "../Stepper";
 import DragDrop from "../DragDrop";
 import {
@@ -13,6 +12,8 @@ import {
   FaFile,
 } from "react-icons/fa";
 import { FaCheck } from "react-icons/fa6";
+import Sidebar from "../Dashboard/Sidebar";
+import Header from "../HeaderDash";
 
 // 🔹 file type icon helper
 const getFileIcon = (fileName: string) => {
@@ -164,8 +165,11 @@ const handleSubmit = async () => {
 
   return (
     <>
-
-      <div className="min-h-[650px] w-full bg-[#E6EAF5] max-w-5xl   flex flex-col">
+    <div className="min-h-screen bg-[#E6EAF5] flex">
+      <Header/>
+        <Sidebar/>
+      <div className=" max-w-5xl mt-20 ml-100 flex flex-col">
+        
         <div className="flex flex-col mt-5 mx-5 p-4">
           {/* Title */}
           <div className="w-full py-2  bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
@@ -299,6 +303,8 @@ const handleSubmit = async () => {
           )}
         </div>
       </div>
+    </div>
+
 
     </>
   );

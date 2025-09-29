@@ -78,14 +78,13 @@ const AllMission: React.FC = () => {
   });
 
   return (
-    <>
-      <Header />
+   
+    <div className="min-h-screen bg-[#E6EAF5] flex">
+
       <div
-        className={`flex gap-80 mt-20 ${twTheme(
-          "bg-[#E6EAF5]",
-          "bg-gray-900"
-        )}`}
+        className="flex gap-70 mt-25"
       >
+        <Header />
         <ManagerSideBar />
 
         <main className={`min-h-screen ${twTheme("", "bg-gray-900")}`}>
@@ -129,15 +128,17 @@ const AllMission: React.FC = () => {
             </div>
 
             {/* Missions Table */}
-            {loading ? (
+           <div className="m">
+             {loading ? (
               <p className="text-gray-500 p-4">Loading missions...</p>
             ) : (
               <MissionTable data={filteredMissions} />
             )}
+           </div>
           </div>
         </main>
       </div>
-    </>
+    </div>
   );
 };
 

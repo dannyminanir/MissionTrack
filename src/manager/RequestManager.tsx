@@ -7,6 +7,8 @@ import { MdOutlineRemoveRedEye } from "react-icons/md";
 import { FaCheck } from "react-icons/fa";
 import { RxCross2 } from "react-icons/rx";
 import axios from "axios";
+import HeaderManager from "./HeaderManager";
+import ManagerSidebar from "./ManagerSideBar";
 
 // --------------------
 // Reusable Card
@@ -45,6 +47,7 @@ const MissionCard: React.FC<MissionCardProps> = ({
   };
 
   return (
+  
     <li className="max-w-md mx-auto grid md:w-[320px] lg:w-[450px]  rounded-xl shadow-md overflow-hidden m-4 p-6">
       {/* Header */}
       <div className="flex items-center justify-between">
@@ -112,8 +115,10 @@ const MissionCard: React.FC<MissionCardProps> = ({
         )}
       </div>
     </li>
+   
   );
 };
+
 
 // --------------------
 // Main Page
@@ -151,7 +156,10 @@ const RequestManager: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#E6EAF5]">
+       <div className="bg-[#E6EAF5]">
+    <HeaderManager/>
+      <ManagerSidebar/>
+    <div className="flex flex-col min-h-screen mt-20 ml-70 mr-5">
       <div className="py-2 mt-5 bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
         <h1 className="font-bold text-2xl text-center">Requests</h1>
       </div>
@@ -202,6 +210,8 @@ const RequestManager: React.FC = () => {
         </ul>
       )}
     </div>
+    </div>
+    
   );
 };
 

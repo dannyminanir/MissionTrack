@@ -34,8 +34,8 @@ const ManagerSidebar: React.FC = () => {
   const quickActions = [
     { icon: RiTeamLine, label: "All Mission", path: "/all" },
     { icon: RiTeamLine, label: "Team Management", path: "/team" },
-    { icon: FiList, label: "Requests", path: "requested" },
-    { icon: FiFileText, label: "Reports", path: "reported" },
+    { icon: FiList, label: "Requests", path: "/requested" },
+    { icon: FiFileText, label: "Reports", path: "/reported" },
   ];
 
   return (

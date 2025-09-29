@@ -3,7 +3,7 @@ import { CiBellOn } from "react-icons/ci";
 import { FiUser, FiFileText, FiList, FiPlusCircle } from "react-icons/fi";
 import { VscHome } from "react-icons/vsc";
 import { BiWallet } from "react-icons/bi";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useTheme } from "../../hook/useTheme";
 import { useAuth } from "../../context/AuthContext";
 
@@ -14,45 +14,43 @@ const Sidebar: React.FC = () => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    logout(); // clear user + token
-    navigate("/login"); // redirect
+    logout(); 
+    navigate("/login"); 
   };
 
   const twTheme = (light: string, dark: string) =>
     theme === "light" ? light : dark;
 
-  // Sidebar navigation
   const navItems = [
-    { icon: VscHome, label: "Dashboard", path: "/employee" },
-    { icon: CiBellOn, label: "Notifications", path: "/employee/notifications" },
+    { icon: VscHome, label: "Employee", path: "/employee" },
+    { icon: CiBellOn, label: "Notifications", path: "/notifications" },
     { icon: FiUser, label: "Profile", path: "/profile" },
   ];
 
-  // Quick actions
   const quickActions = [
-    { icon: FiPlusCircle, label: "New Mission Request", path: "/employee/request" },
-    { icon: FiList, label: "Request List/Tracking", path: "/employee/requestList" },
-    { icon: BiWallet, label: "Expense Logging", path: "/employee/expenses" },
-    { icon: FiFileText, label: "Mission Reporting", path: "/employee/report" },
+    { icon: FiPlusCircle, label: "New Mission Request", path: "/request" },
+    { icon: FiList, label: "Request List/Tracking", path: "/requestList" },
+    { icon: BiWallet, label: "Expense Logging", path: "/expenses" },
+    { icon: FiFileText, label: "Mission Reporting", path: "/report" },
   ];
 
   return (
     <aside
-      className={`fixed top-20 h-full left-0  w-64 flex flex-col justify-between shadow-md z-40 overflow-y-auto ${twTheme(
+      className={`fixed top-20 left-0 w-64 h-full flex flex-col justify-between shadow-md z-40 overflow-y-auto ${twTheme(
         "bg-blue-50",
-        " text-white"
+        "bg-gray-900 text-white"
       )}`}
     >
-      <div className="p-5">
+      <div className="flex flex-col ml-5 gap-10 ">
         {/* Navigation */}
-        <nav className="space-y-2">
+        <nav className="">
           {navItems.map(({ icon: Icon, label, path }) => {
-            const isActive = location.pathname.startsWith(path);
+            const isActive = location.pathname === path;
             return (
-              <Link
+              <button
                 key={label}
-                to={path}
-                className={`flex items-center text-lg gap-3 px-3 py-2 rounded-md transition-colors ${
+                onClick={() => navigate(path)}
+                className={`w-full text-left flex items-center text-lg gap-3 px-3 py-2 rounded-md transition-colors ${
                   isActive
                     ? "bg-gray-200 text-black font-bold"
                     : twTheme(
@@ -63,22 +61,22 @@ const Sidebar: React.FC = () => {
               >
                 <Icon size={20} className={isActive ? "text-black" : "text-black"} />
                 {label}
-              </Link>
+              </button>
             );
           })}
         </nav>
 
         {/* Quick Actions */}
-        <div className="mt-10">
-          <p className="mb-3 ml-4 text-lg font-bold">Quick Actions</p>
+        <div className="mt-1">
+          <p className="mb-3 ml-10 text-lg font-bold">Quick Actions</p>
           <div className="space-y-2">
             {quickActions.map(({ icon: Icon, label, path }) => {
-              const isActive = location.pathname.startsWith(path);
+              const isActive = location.pathname === path;
               return (
-                <Link
+                <button
                   key={label}
-                  to={path}
-                  className={`flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
+                  onClick={() => navigate(path)}
+                  className={`w-full text-left flex items-center gap-2 px-3 py-2 rounded-md transition-colors ${
                     isActive
                       ? "bg-gray-200 text-black font-semibold"
                       : twTheme(
@@ -89,25 +87,23 @@ const Sidebar: React.FC = () => {
                 >
                   <Icon size={18} className="text-black" />
                   {label}
-                </Link>
+                </button>
               );
             })}
           </div>
+          {/* Logout */}
+        <div className="mt-15 mr-17 ml-6">
+          <button
+            onClick={handleLogout}
+            className="w-full bg-green-600  text-white font-semibold py-2 rounded-2xl transition hover:bg-green-700"
+          >
+            Logout
+          </button>
+        </div>
         </div>
 
-             {/* ✅ Logout always at bottom */}
-            <div className="p-5 mt-5">
-        <button
-          onClick={handleLogout}
-          className="w-full bg-green-600 text-white font-semibold py-2 rounded-2xl transition hover:bg-green-700"
-        >
-          Logout
-        </button>
+        
       </div>
-      </div>
-
- 
-  
     </aside>
   );
 };

@@ -3,6 +3,8 @@ import axios from "axios";
 import { BsCalendar2Event } from "react-icons/bs";
 import { FiUser } from "react-icons/fi";
 import { MdOutlineRemoveRedEye } from "react-icons/md";
+import HeaderManager from "./HeaderManager";
+import ManagerSidebar from "./ManagerSideBar";
 
 interface Report {
   id: string;
@@ -46,7 +48,11 @@ const ReportManager: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen bg-[#E6EAF5]">
+  <div className="bg-[#E6EAF5]">
+    <HeaderManager/>
+      <ManagerSidebar/>
+<div className="flex flex-col min-h-screen mt-20 ml-70 mr-5 ">
+      
       <div className="py-2 mt-5 bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
         <h1 className="font-bold text-2xl text-center">Reports</h1>
       </div>
@@ -187,7 +193,9 @@ const ReportManager: React.FC = () => {
         </ul>
       )}
     </div>
-  );
+
+  </div>
+      );
 };
 
 export default ReportManager;

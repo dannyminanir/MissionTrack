@@ -4,6 +4,8 @@ import { FaCheck } from "react-icons/fa";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { RiFileCloseLine } from "react-icons/ri";
 import { FiSearch } from "react-icons/fi";
+import Header from "../HeaderDash";
+import Sidebar from "./Sidebar";
 
 type MissionCardProps = {
   title: string;
@@ -83,7 +85,10 @@ const MissionList: React.FC = () => {
   );
 
   return (
-    <div className="flex flex-col">
+        <div className="min-h-screen bg-[#E6EAF5] flex">
+      <Header/>
+        <Sidebar/>
+    <div className="flex flex-col mt-20 ml-85">
       <div className="py-2 mt-5 bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
         <h1 className="font-bold text-2xl text-center">Your Missions</h1>
       </div>
@@ -110,6 +115,7 @@ const MissionList: React.FC = () => {
           <MissionCard key={index} {...mission} />
         ))}
       </ul>
+    </div>
     </div>
   );
 };

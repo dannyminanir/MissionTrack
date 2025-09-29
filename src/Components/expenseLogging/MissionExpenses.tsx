@@ -28,8 +28,10 @@ const MissionExpenses: React.FC = () => {
 
   return (
     <>
-     
-        <div className="w-[900px] ml-4 px-10 rounded-lg">
+         <div className="min-h-screen bg-[#E6EAF5] flex">
+      <Header/>
+        <Sidebar/>
+        <div className="w-[900px] ml-90 mt-23 rounded-lg">
           {/* Header with gradient */}
            <div className="w- py-2 mt-5 bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
             <h1 className="font-bold text-2xl text-center">Mission Expenses</h1>
@@ -144,7 +146,8 @@ const MissionExpenses: React.FC = () => {
             </div>
           </div>
         </div>
-      
+              </div>
+
     </>
   );
 };

@@ -3,6 +3,8 @@ import { SiTicktick } from "react-icons/si";
 import { FaCheck } from "react-icons/fa";
 import { MdOutlinePendingActions } from "react-icons/md";
 import { RiFileCloseLine } from "react-icons/ri";
+import Header from "../HeaderDash";
+import Sidebar from "./Sidebar";
 
 interface NotificationCardProps {
   title: string;
@@ -49,7 +51,10 @@ const NotificationCard: React.FC<NotificationCardProps> = ({
 
 const NotificationPage: React.FC = () => {
   return (
-    <div className="flex flex-col">
+    <div className="min-h-screen bg-[#E6EAF5] flex">
+          <Header/>
+            <Sidebar/>
+    <div className="flex flex-col mt-20 ml-90">
       <div className="py-2 mt-5 bg-gradient-to-l from-accent-10 rounded-md to-primaryColor-50">
         <h1 className="font-bold text-2xl text-center">Notifications</h1>
       </div>
@@ -88,6 +93,8 @@ const NotificationPage: React.FC = () => {
         />
       </ul>
     </div>
+        </div>
+
   );
 };
 

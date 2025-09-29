@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import LoginForm from "../pages/LoginForm"; 
-import Dashboard from "../pages/EmployeeDashboard";
 import LandingPage from "../pages/LandingPage";
 import Profile from "../Components/Settings/Profile";
 import Password from "../Components/Settings/Password";
@@ -12,7 +11,6 @@ import MissionList from "../Components/Dashboard/MissionList";
 import Report from "../Components/Dashboard/Report";
 import MissionExpenses from "../Components/expenseLogging/MissionExpenses";
 import UpdatePassword from "../Components/forgetPassword/UpdatePassword";
-import ManagerDashboard from "../pages/ManagerDashboard";
 import ApplicationForm from "../Components/ApplicationForm";
 import TeamManagement from "../manager/TeamManagement";
 import RequestManager from "../manager/RequestManager";
@@ -29,42 +27,32 @@ import ManagerHome from "../pages/ManagerHome";
 import EmployeeHome from "../pages/EmployeeHome";
 import AllMission from "../pages/AllMission";
 
+
 const AppRoute = () => {
   return (
     <Routes>
+      {/* Public */}
       <Route path="/" element={<LandingPage />} />
       <Route path="/login" element={<LoginForm />} />
-
-      {/* Employee */}
-      <Route path="/employee" element={<Dashboard />}>
-        <Route index element={<EmployeeHome />} />
-        <Route path="notifications" element={<NotificationPage />} />
-        <Route path="request" element={<Details />} />
-        <Route path="requestList" element={<MissionList />} />
-        <Route path="expenses" element={<MissionExpenses />} />
-        <Route path="report" element={<Report />} />
-      </Route>
-
-      {/* Global settings */}
-      <Route path="/password" element={<Password />} />
-      <Route path="/preferences" element={<Notification />} />
-
-      {/* Password recovery */}
       <Route path="/forgot-password" element={<RecoverPassword />} />
       <Route path="/reset-password/:token" element={<UpdatePassword />} />
 
-      {/* Manager */}
-      <Route path="/manager" element={<ManagerDashboard />}>
-        <Route index element={<ManagerHome />} />
-        <Route path="team" element={<TeamManagement />} />
-        <Route path="all" element={<AllMission />} />
-        <Route path="requested" element={<RequestManager />} />
-        <Route path="reported" element={<ReportManager />} />
-      </Route>
-      <Route path="/missions/:id" element={<ReportDetails />} />
 
-      {/* Apply form */}
-      <Route path="/apply" element={<ApplicationForm />} />
+        <Route path="/employee" element={<EmployeeHome />} />
+        <Route path="/notifications" element={<NotificationPage />} />
+        <Route path="/request" element={<Details />} />
+        <Route path="/requestList" element={<MissionList />} />
+        <Route path="/expenses" element={<MissionExpenses />} />
+        <Route path="/report" element={<Report />} />
+      
+
+      {/* Manager */}
+      <Route path="/manager" element={<ManagerHome />} />
+      <Route path="/team" element={<TeamManagement />} />
+      <Route path="/all" element={<AllMission />} />
+      <Route path="/requested" element={<RequestManager />} />
+      <Route path="/reported" element={<ReportManager />} />
+      <Route path="/missions/:id" element={<ReportDetails />} />
 
       {/* Admin */}
       <Route path="/admin" element={<AdminDashboard />}>
@@ -81,6 +69,7 @@ const AppRoute = () => {
       <Route path="/finance" element={<FinanceDashboard />} />
 
       {/* Shared */}
+      <Route path="/apply" element={<ApplicationForm />} />
       <Route path="/pending" element={<Pending />} />
       <Route path="/rejected" element={<Rejected />} />
     </Routes>

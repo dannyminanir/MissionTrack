@@ -9,6 +9,8 @@ import ThisMonthChart from "../chart/ThisMonthChart";
 import ExpensesChart from "../chart/ExpensesChart";
 import MissionProgress from "../Components/Dashboard/MissionProgress";
 import OngoingMissions from "../Components/Dashboard/OngoingMissions";
+import Header from "../Components/HeaderDash";
+import Sidebar from "../Components/Dashboard/Sidebar";
 
 const twTheme = (light: string, dark: string) => {
   return `${light} dark:${dark}`;
@@ -17,12 +19,11 @@ const twTheme = (light: string, dark: string) => {
 const EmployeeHome: React.FC = () => {
     return (
 
-
-<main
-    className={`min-h-screen   ${twTheme(
-        "",
-        "bg-gray-900"
-    )}`}
+<div className="min-h-screen bg-[#E6EAF5] flex">
+    <Header/>
+    <Sidebar/>
+   <main
+    className="mt-20 ml-70 mr-5"
 >
     {/* Overview */}
     <div className="mt-5">
@@ -69,7 +70,9 @@ const EmployeeHome: React.FC = () => {
         </div>
 
     </div>
-</main>
+</main> 
+</div>
+
     )};
 
 
