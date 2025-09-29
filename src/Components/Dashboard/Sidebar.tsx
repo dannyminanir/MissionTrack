@@ -40,7 +40,7 @@ const Sidebar: React.FC = () => {
     <aside
       className={`fixed top-20 h-full left-0  w-64 flex flex-col justify-between shadow-md z-40 overflow-y-auto ${twTheme(
         "bg-blue-50",
-        "bg-gray-900 text-white"
+        " text-white"
       )}`}
     >
       <div className="p-5">
@@ -94,10 +94,9 @@ const Sidebar: React.FC = () => {
             })}
           </div>
         </div>
-      </div>
 
-      {/* ✅ Logout always at bottom */}
-      <div className="p-5">
+             {/* ✅ Logout always at bottom */}
+            <div className="p-5 mt-5">
         <button
           onClick={handleLogout}
           className="w-full bg-green-600 text-white font-semibold py-2 rounded-2xl transition hover:bg-green-700"
@@ -105,6 +104,10 @@ const Sidebar: React.FC = () => {
           Logout
         </button>
       </div>
+      </div>
+
+ 
+  
     </aside>
   );
 };
